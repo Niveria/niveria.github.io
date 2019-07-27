@@ -1,16 +1,19 @@
 <!DOCTYPE html>
 <html lang="ru">
     <head>
+        <!-- предзагрузка шрифтов -->
+        <link rel="preload" href="fonts/Roboto.woff" as="font" crossorigin/>
+
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, maximum-scale=1.0">
         <meta http-eguiv="X-UA-Compatible" content="ie=edge">
-         <!-- подключить основные файлы js и css -->
+         <!-- подключить основные файлы css -->
         <link rel='stylesheet' href='styles/main.css'/>
          <!-- слкайдер Slink (в центре) -->
         <link rel="stylesheet" type="text/css" href="slick/slick.css"/>
         <link rel="stylesheet" type="text/css" href="slick/slick-theme.css"/>
         <!-- слайдер верний -->
-        <link  href="https://cdnjs.cloudflare.com/ajax/libs/fotorama/4.6.4/fotorama.css" rel="stylesheet">
+        <link  href="https://cdnjs.cloudflare.com/ajax/libs/fotorama/4.6.4/fotorama.css" rel="stylesheet"/>
         <!-- Всплывашка 
         <link rel="stylesheet" type="text/css" href="Magnific Popup/magnific-popup.css"/>
         <script type="text/javascript" src="Magnific Popup/jquery.magnific-popup.min.js"></script>-->
@@ -25,7 +28,7 @@
                 <h1>Репро </br>
                 дукцио</h1>
                 <h5> <strong>Оффлайне магазин репродукций шедевров мирового искусства</strong></h5>
-                </br>
+                </br><figure class="icon-emo-sleep"></figure><figure class="icon-emo-happy"></figure><figure class="icon-music"></figure>
                 <p> Санкт-Петербург </br> ул. Адмирала Черокова, 18</p>
                 <p>+7 (812) 960-22-01</br>
                 <a href="#">shop@reproduct.io</a>
@@ -36,9 +39,21 @@
             data-allowfullscreen="native"
             data-nav="thumbs" 
             data-autoplay="true">
-                    <img src="assets/2kartinka.jpg" data-caption="">
-                    <img src="assets/serafim.jpg" data-caption="Шестикрылый серафим /br Михаил Врубель">
-                    <img src="assets/venera.jpg" data-caption="">
+                <img class="js-lazy"
+                data-src="assets/2kartinka.jpg"
+                src="assets/placeholder.jpg" 
+                data-caption=""
+                alt="Foo Bar">
+                <img class="js-lazy"
+                data-src="assets/serafim.jpg"
+                src="assets/placeholder.jpg"
+                data-caption="Шестикрылый серафим Михаил Врубель"
+                alt="Foo Bar">
+                <img class="js-lazy"
+                data-src="assets/venera.jpg"
+                src="assets/placeholder.jpg" 
+                data-caption=""
+                alt="Foo Bar">
             </div>
         </header>
 
@@ -49,7 +64,7 @@
             <div class="js-slider">
                 <div >
                     <a class="image-popup-vertical-fit" href="assets/dsser.jpg">
-                        <img  src="assets/dsser.jpg" alt="">
+                        <img  src="assets/dsser.jpg" alt=" ">
                     </a>
                     <div class="grid3" style="padding: 0 70px 0; line-height: 1.2;" >
                         <h5 style="grid-area: p1;">Девушка с жемчужиной сережкой, 1665 </h5>
@@ -60,7 +75,7 @@
 
                 <div >
                     <a class="image-popup-vertical-fit" href="assets/boni.jpg">
-                        <img  src="assets/boni.jpg" alt="">
+                        <img  src="assets/boni.jpg" alt=" ">
                     </a>
                     <div class="grid3" style="padding: 0 70px 0; line-height: 1.2;" >
                         <h5 style="grid-area: p1;">Бонапарт на перевале Сен-Бернар, 1801</h5>
@@ -71,7 +86,7 @@
 
                 <div >
                     <a class="image-popup-vertical-fit" href="assets/021.jpg">
-                        <img  src="assets/021.jpg" alt="">
+                        <img  src="assets/021.jpg" alt=" ">
                     </a>
                     <div class="grid3" style="padding: 0 70px 0; line-height: 1.2;" >
                         <h5 style="grid-area: p1;">Охотник на снегу, 1564</h5>
@@ -94,31 +109,50 @@
 
         </main>
 
-        <footer class="grid2">
-            <div style="grid-area: left;" >
-                <h2>Написать нам</h2>
-                <h5>Заполните форму справа </br> или отправьте письмо на shop@reproduct.io</h5>
-            </div>
-            <div style="grid-area: left; padding-top: 190px;" class="links">
-                <p>Репродукция, 2019</p>
-                <!-- Всплывашка -->
-                <a href="#test-popup" class="inline-popups" data-effect="mfp-zoom-in">Правила обработки персональных данных</a>
+        <footer>
 
-                <div id="test-popup" class="white-popup mfp-with-anim mfp-hide">
-                    Длинный текст о правилах обработки персональны данных
+            <div class="grid2">
+                <div style="grid-area: left;" >
+                    <h2>Написать нам</h2>
+                    <h5>Заполните форму справа </br> или отправьте письмо на shop@reproduct.io</h5>
+                </div>
+                <div style="grid-area: left; padding-top: 190px;" class="links">
+                    <p>Репродукция, 2019</p>
+                    <!-- Всплывашка -->
+                    <a href="#test-popup" class="inline-popups" data-effect="mfp-zoom-in">Правила обработки персональных данных</a>
+
+                    <div id="test-popup" class="white-popup mfp-with-anim mfp-hide">
+                        Длинный текст о правилах обработки персональны данных
+                    </div>
+                </div>
+
+                <div style="grid-area: right;">
+                <form method="post" id="ajax_form" action="">
+                    <div class="form-inner">
+                        <input name="email" class="validate" type="email" placeholder="Email" >
+                        <textarea name="formData" placeholder="Сообщение..." rows="3"></textarea>
+                        <input type="submit" value="Отправить сообщение">
+                    </div>
+                </form>
                 </div>
             </div>
 
-            <div style="grid-area: right;">
-            <form method="post" id="ajax_form" action="">
-                <div class="form-inner">
-                    <input name="email" class="validate" type="email" placeholder="Email" >
-                    <textarea name="formData" placeholder="Сообщение..." rows="3"></textarea>
-                    <input type="submit" value="Отправить сообщение">
-                </div>
-            </form>
+            <div class="container">
+                <img class="img-container" 
+                src="assets/dsser-mini.jpg" 
+                data-src="assets/dsser.jpg"
+                alt="">
+                <img class="img-container" 
+                src="assets/021-mini.jpg" 
+                data-src="assets/021.jpg"
+                alt="">
+                <img class="img-container" 
+                src="assets/boni-mini.jpg" 
+                data-src="assets/boni.jpg"
+                alt="">
             </div>
-
+            <div>НЕКИЙ текст сравнения</div>
+            <duv class="roboto">НЕКИЙ ТЕКСТ ДЛЯ ПРОВЕРКИ ПОДКЛЮЧЕНИЯ РОБОТО. бла бла бла бла бла бла бла бла бла бла бла бла бла бла бла бла бла бла бла бла бла бла бла бла бла бла бла бла бла бла бла бла бла бла бла бла бла бла бла бла бла бла бла бла бла бла бла бла бла бла бла бла бла бла бла бла бла бла бла бла бла бла бла бла бла бла бла бла бла бла бла бла бла бла бла бла бла бла бла бла бла бла бла бла бла бла бла</duv>
         </footer>
 
         <!-- вклоючить джава скрипт -->
